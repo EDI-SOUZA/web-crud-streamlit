@@ -23,13 +23,15 @@ def get_sheet():
     try:
         client = get_client()
         sheet = client.open("basecontatos").sheet1
-        # Garante que o cabeçalho está lá (opcional)
         if not sheet.row_values(1):
             sheet.append_row(["nome", "email"])
         return sheet
     except Exception as e:
         st.error(f"Erro ao acessar a planilha: {e}")
+        import traceback
+        st.error(traceback.format_exc())
         return None
+
 
 def add_contato(nome, email):
     sheet = get_sheet()
