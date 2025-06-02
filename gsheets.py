@@ -22,9 +22,9 @@ def get_client():
 def get_sheet():
     try:
         client = get_client()
-        sheet = client.open("basecontatos").sheet1
+        sheet = client.open("Consultas Agendadas").sheet1
         if not sheet.row_values(1):
-            sheet.append_row(["nome", "email"])
+            sheet.append_row(["nome", "data_ nascimento", "cpf", "telefone", "email"])
         return sheet
     except Exception as e:
         st.error(f"Erro ao acessar a planilha: {e}")
@@ -33,18 +33,18 @@ def get_sheet():
         return None
 
 
-def add_contato(nome, email):
+def add_dado(nome, data_nascimento, cpf, telefone, email):
     sheet = get_sheet()
     if sheet:
-        contatos = listar_contatos()
-        for contato in contatos:
-            if contato.get("nome") == nome and contato.get("email") == email:
+        dados = listar_dados()
+        for dado in dados:
+            if dado.get("nome") == nome and dado.get("data_nascimento") == data_nascimento and dado.get("cpf") == cpf and dado.get("telefone") == telefone and dado.get("email") == email:
                 return False  # Já existe
         sheet.append_row([nome, email])
         return True
     return False
 
-def listar_contatos():
+def listar_dados():
     sheet = get_sheet()
     if sheet:
         try:
