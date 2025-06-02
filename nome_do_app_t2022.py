@@ -1,5 +1,5 @@
 import streamlit as st
-from gsheets import add_contato, listar_dados
+from gsheets import add_dado, listar_dados
 
 st.set_page_config(page_title="Agenda", layout="centered")
 st.title("Agenda de Consultas")
@@ -14,7 +14,7 @@ with st.form("form_contato"):
 
     if enviar:
         if nome and email:
-            sucesso = add_contato(nome, data_nascimento, cpf, telefone, email)
+            sucesso = add_dado(nome, data_nascimento, cpf, telefone, email)
             if sucesso:
                 st.success("Contato salvo com sucesso!")
             else:
