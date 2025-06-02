@@ -2,7 +2,7 @@ import streamlit as st
 from gsheets import add_dado, listar_dados
 
 st.set_page_config(page_title="Agenda", layout="centered")
-st.title("Agenda de Consultas")
+st.title("Agenda de Consultas 📅")
 
 with st.form("form_contato"):
     nome = st.text_input("Nome")
