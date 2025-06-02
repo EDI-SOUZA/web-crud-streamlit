@@ -40,7 +40,7 @@ def add_dado(nome, data_nascimento, cpf, telefone, email):
         for dado in dados:
             if dado.get("nome") == nome and dado.get("data_nascimento") == data_nascimento and dado.get("cpf") == cpf and dado.get("telefone") == telefone and dado.get("email") == email:
                 return False  # Já existe
-        sheet.append_row([nome, email])
+        sheet.append_row([nome, data_nascimento, cpf, telefone, email])
         return True
     return False
 
